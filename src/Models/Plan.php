@@ -183,11 +183,11 @@ class Plan extends Model implements Sortable
             'signup_fee' => 'required|numeric',
             'currency' => 'required|alpha|size:3',
             'trial_period' => 'sometimes|integer|max:10000',
-            'trial_interval' => 'sometimes|string|in:hour,day,week,month',
+            'trial_interval' => 'sometimes|in:hour,day,week,month',
             'invoice_period' => 'sometimes|integer|max:10000',
-            'invoice_interval' => 'sometimes|string|in:hour,day,week,month',
+            'invoice_interval' => 'sometimes|in:hour,day,week,month',
             'grace_period' => 'sometimes|integer|max:10000',
-            'grace_interval' => 'sometimes|string|in:hour,day,week,month',
+            'grace_interval' => 'sometimes|in:hour,day,week,month',
             'sort_order' => 'nullable|integer|max:10000000',
             'prorate_day' => 'nullable|integer|max:150',
             'prorate_period' => 'nullable|integer|max:150',
@@ -276,7 +276,7 @@ class Plan extends Model implements Sortable
      *
      * @return $this
      */
-    public function activate()
+    public function makeActive()
     {
         $this->update(['is_active' => true]);
 
@@ -288,7 +288,7 @@ class Plan extends Model implements Sortable
      *
      * @return $this
      */
-    public function deactivate()
+    public function makeInactive()
     {
         $this->update(['is_active' => false]);
 
