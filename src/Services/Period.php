@@ -59,6 +59,8 @@ class Period
             $this->period = $count;
         }
 
+        $this->interval = $interval;
+
         $start = clone $this->start;
         $method = 'add'.ucfirst($this->interval).'s';
         $this->end = $start->$method($this->period);
